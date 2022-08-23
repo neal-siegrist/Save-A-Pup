@@ -10,63 +10,22 @@
 		D92454FA28B549C200D2C961 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92454F928B549C200D2C961 /* AppDelegate.swift */; };
 		D92454FC28B549C200D2C961 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92454FB28B549C200D2C961 /* SceneDelegate.swift */; };
 		D92454FE28B549C200D2C961 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92454FD28B549C200D2C961 /* ViewController.swift */; };
-		D924550128B549C200D2C961 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D92454FF28B549C200D2C961 /* Main.storyboard */; };
 		D924550328B549C300D2C961 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D924550228B549C300D2C961 /* Assets.xcassets */; };
 		D924550628B549C300D2C961 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D924550428B549C300D2C961 /* LaunchScreen.storyboard */; };
-		D924551128B549C400D2C961 /* Save_A_PupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924551028B549C400D2C961 /* Save_A_PupTests.swift */; };
-		D924551B28B549C400D2C961 /* Save_A_PupUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924551A28B549C400D2C961 /* Save_A_PupUITests.swift */; };
-		D924551D28B549C400D2C961 /* Save_A_PupUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924551C28B549C400D2C961 /* Save_A_PupUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		D924550D28B549C400D2C961 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D92454EE28B549C200D2C961 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D92454F528B549C200D2C961;
-			remoteInfo = "Save A Pup";
-		};
-		D924551728B549C400D2C961 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D92454EE28B549C200D2C961 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D92454F528B549C200D2C961;
-			remoteInfo = "Save A Pup";
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		D92454F628B549C200D2C961 /* Save A Pup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Save A Pup.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D92454F928B549C200D2C961 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D92454FB28B549C200D2C961 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D92454FD28B549C200D2C961 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D924550028B549C200D2C961 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D924550228B549C300D2C961 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D924550528B549C300D2C961 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D924550728B549C300D2C961 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D924550C28B549C400D2C961 /* Save A PupTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Save A PupTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D924551028B549C400D2C961 /* Save_A_PupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Save_A_PupTests.swift; sourceTree = "<group>"; };
-		D924551628B549C400D2C961 /* Save A PupUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Save A PupUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D924551A28B549C400D2C961 /* Save_A_PupUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Save_A_PupUITests.swift; sourceTree = "<group>"; };
-		D924551C28B549C400D2C961 /* Save_A_PupUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Save_A_PupUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		D92454F328B549C200D2C961 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D924550928B549C400D2C961 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D924551328B549C400D2C961 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -80,8 +39,6 @@
 			isa = PBXGroup;
 			children = (
 				D92454F828B549C200D2C961 /* Save A Pup */,
-				D924550F28B549C400D2C961 /* Save A PupTests */,
-				D924551928B549C400D2C961 /* Save A PupUITests */,
 				D92454F728B549C200D2C961 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -90,8 +47,6 @@
 			isa = PBXGroup;
 			children = (
 				D92454F628B549C200D2C961 /* Save A Pup.app */,
-				D924550C28B549C400D2C961 /* Save A PupTests.xctest */,
-				D924551628B549C400D2C961 /* Save A PupUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -102,29 +57,11 @@
 				D92454F928B549C200D2C961 /* AppDelegate.swift */,
 				D92454FB28B549C200D2C961 /* SceneDelegate.swift */,
 				D92454FD28B549C200D2C961 /* ViewController.swift */,
-				D92454FF28B549C200D2C961 /* Main.storyboard */,
 				D924550228B549C300D2C961 /* Assets.xcassets */,
 				D924550428B549C300D2C961 /* LaunchScreen.storyboard */,
 				D924550728B549C300D2C961 /* Info.plist */,
 			);
 			path = "Save A Pup";
-			sourceTree = "<group>";
-		};
-		D924550F28B549C400D2C961 /* Save A PupTests */ = {
-			isa = PBXGroup;
-			children = (
-				D924551028B549C400D2C961 /* Save_A_PupTests.swift */,
-			);
-			path = "Save A PupTests";
-			sourceTree = "<group>";
-		};
-		D924551928B549C400D2C961 /* Save A PupUITests */ = {
-			isa = PBXGroup;
-			children = (
-				D924551A28B549C400D2C961 /* Save_A_PupUITests.swift */,
-				D924551C28B549C400D2C961 /* Save_A_PupUITestsLaunchTests.swift */,
-			);
-			path = "Save A PupUITests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,42 +84,6 @@
 			productReference = D92454F628B549C200D2C961 /* Save A Pup.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D924550B28B549C400D2C961 /* Save A PupTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D924552328B549C400D2C961 /* Build configuration list for PBXNativeTarget "Save A PupTests" */;
-			buildPhases = (
-				D924550828B549C400D2C961 /* Sources */,
-				D924550928B549C400D2C961 /* Frameworks */,
-				D924550A28B549C400D2C961 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D924550E28B549C400D2C961 /* PBXTargetDependency */,
-			);
-			name = "Save A PupTests";
-			productName = "Save A PupTests";
-			productReference = D924550C28B549C400D2C961 /* Save A PupTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		D924551528B549C400D2C961 /* Save A PupUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D924552628B549C400D2C961 /* Build configuration list for PBXNativeTarget "Save A PupUITests" */;
-			buildPhases = (
-				D924551228B549C400D2C961 /* Sources */,
-				D924551328B549C400D2C961 /* Frameworks */,
-				D924551428B549C400D2C961 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D924551828B549C400D2C961 /* PBXTargetDependency */,
-			);
-			name = "Save A PupUITests";
-			productName = "Save A PupUITests";
-			productReference = D924551628B549C400D2C961 /* Save A PupUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -195,14 +96,6 @@
 				TargetAttributes = {
 					D92454F528B549C200D2C961 = {
 						CreatedOnToolsVersion = 13.3.1;
-					};
-					D924550B28B549C400D2C961 = {
-						CreatedOnToolsVersion = 13.3.1;
-						TestTargetID = D92454F528B549C200D2C961;
-					};
-					D924551528B549C400D2C961 = {
-						CreatedOnToolsVersion = 13.3.1;
-						TestTargetID = D92454F528B549C200D2C961;
 					};
 				};
 			};
@@ -220,8 +113,6 @@
 			projectRoot = "";
 			targets = (
 				D92454F528B549C200D2C961 /* Save A Pup */,
-				D924550B28B549C400D2C961 /* Save A PupTests */,
-				D924551528B549C400D2C961 /* Save A PupUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -233,21 +124,6 @@
 			files = (
 				D924550628B549C300D2C961 /* LaunchScreen.storyboard in Resources */,
 				D924550328B549C300D2C961 /* Assets.xcassets in Resources */,
-				D924550128B549C200D2C961 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D924550A28B549C400D2C961 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D924551428B549C400D2C961 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,47 +140,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D924550828B549C400D2C961 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D924551128B549C400D2C961 /* Save_A_PupTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D924551228B549C400D2C961 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D924551B28B549C400D2C961 /* Save_A_PupUITests.swift in Sources */,
-				D924551D28B549C400D2C961 /* Save_A_PupUITestsLaunchTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		D924550E28B549C400D2C961 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D92454F528B549C200D2C961 /* Save A Pup */;
-			targetProxy = D924550D28B549C400D2C961 /* PBXContainerItemProxy */;
-		};
-		D924551828B549C400D2C961 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D92454F528B549C200D2C961 /* Save A Pup */;
-			targetProxy = D924551728B549C400D2C961 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin PBXVariantGroup section */
-		D92454FF28B549C200D2C961 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D924550028B549C200D2C961 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		D924550428B549C300D2C961 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -443,8 +281,10 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -471,8 +311,10 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -483,82 +325,6 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		D924552428B549C400D2C961 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = JM53A4WWCH;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nealsiegrist.Save-A-PupTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Save A Pup.app/Save A Pup";
-			};
-			name = Debug;
-		};
-		D924552528B549C400D2C961 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = JM53A4WWCH;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nealsiegrist.Save-A-PupTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Save A Pup.app/Save A Pup";
-			};
-			name = Release;
-		};
-		D924552728B549C400D2C961 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = JM53A4WWCH;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nealsiegrist.Save-A-PupUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Save A Pup";
-			};
-			name = Debug;
-		};
-		D924552828B549C400D2C961 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = JM53A4WWCH;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nealsiegrist.Save-A-PupUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Save A Pup";
 			};
 			name = Release;
 		};
@@ -579,24 +345,6 @@
 			buildConfigurations = (
 				D924552128B549C400D2C961 /* Debug */,
 				D924552228B549C400D2C961 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D924552328B549C400D2C961 /* Build configuration list for PBXNativeTarget "Save A PupTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D924552428B549C400D2C961 /* Debug */,
-				D924552528B549C400D2C961 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D924552628B549C400D2C961 /* Build configuration list for PBXNativeTarget "Save A PupUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D924552728B549C400D2C961 /* Debug */,
-				D924552828B549C400D2C961 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
