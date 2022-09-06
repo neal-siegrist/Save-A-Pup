@@ -43,7 +43,13 @@ struct Constants {
     struct NetworkingConstants {
         static let animalApiUrl: String = "https://api.petfinder.com"
         static let apiTokenUrl: String = "https://api.petfinder.com/v2/oauth2/token"
-        static let shelterApiUrl: String = "https://api.petfinder.com"
+        static let shelterApiUrl: String = "https://api.petfinder.com/v2/organizations"
+    }
+    
+    struct ShelterCell {
+        static let MAIN_FONT_SIZE: CGFloat = 16
+        static let SUB_FONT_SIZE: CGFloat = 9
+        static let DISTANCE_FONT_SIZE: CGFloat = 12
     }
     
     struct WelcomePage {

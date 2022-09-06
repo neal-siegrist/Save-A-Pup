@@ -5,10 +5,10 @@
 //  Created by Neal Siegrist on 8/23/22.
 //
 
-import Foundation
 import UIKit
 
 class HomepageViewController: UIViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
         let view = HomepageView(frame: .zero)
@@ -24,9 +24,9 @@ class HomepageViewController: UIViewController {
 extension HomepageViewController: HomeViewDelegate {
     func buttonPressed(_ button: UIButton) {
         if button.tag == 0 {
-            print("Selected shelters")
+            navigationController?.pushViewController(ShelterResultsViewController(viewType: .shelterView), animated: true)
         } else if button.tag == 1 {
-            print("Selected animals")
+            //navigationController?.pushViewController(ResultsViewController(controllerType: .animal), animated: true)
         }
     }
 }

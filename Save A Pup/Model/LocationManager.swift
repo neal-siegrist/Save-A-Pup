@@ -12,7 +12,7 @@ class LocationManager: NSObject {
     public static let shared = LocationManager()
     
     private let locationManager = CLLocationManager()
-    
+    private var isFetching = false
     @Published var location: CLLocation = CLLocation(latitude: 38.8815959, longitude: -122.0739578)
     
     override private init() {
@@ -23,7 +23,10 @@ class LocationManager: NSObject {
     }
     
     func updateToCurrentLocation() {
-        locationManager.requestLocation()
+        if !isFetching {
+            self.isFetching = true
+            locationManager.requestLocation()
+        }
     }
 }
 
@@ -35,10 +38,10 @@ extension LocationManager: CLLocationManagerDelegate {
         switch manager.authorizationStatus {
         case .authorizedAlways, .authorizedWhenInUse:
             print("authorized")
+            self.isFetching = true
             manager.requestLocation()
         case .denied, .restricted:
             print("not allowed")
-            manager.requestLocation()
         case .notDetermined:
             print("not determined")
         @unknown default:
@@ -52,9 +55,11 @@ extension LocationManager: CLLocationManagerDelegate {
         guard let currLocation = locations.last else { return }
         
         self.location = currLocation
+        self.isFetching = false
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        self.isFetching = false
         guard let clError = error as? CLError else { return }
         
         switch clError.code {
