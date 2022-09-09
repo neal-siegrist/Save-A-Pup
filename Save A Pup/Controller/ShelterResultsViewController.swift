@@ -5,7 +5,6 @@
 //  Created by Neal Siegrist on 8/26/22.
 //
 
-import Foundation
 import CoreLocation
 import UIKit
 
@@ -64,7 +63,6 @@ extension ShelterResultsViewController: UITableViewDataSource, UITableViewDelega
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        print("Count: \(sheltersWrapper.getSheltersCount())")
         return sheltersWrapper.getSheltersCount()
     }
     
@@ -80,10 +78,7 @@ extension ShelterResultsViewController: UITableViewDataSource, UITableViewDelega
         guard let currView = self.view as? ShelterResultsView else { fatalError("Cannot create shelter cell.") }
         
         let shelters = sheltersWrapper.getShelters()
-        
         let cell = currView.listView.dequeueReusableCell(withIdentifier: ShelterCell.CELL_IDENTIFIER) as! ShelterCell
-
-        //cell.shelterPic = UIImage(named: "Shelter Icon.png")
         
         cell.nameLabel.text = shelters[indexPath.section].name
 
@@ -104,7 +99,7 @@ extension ShelterResultsViewController: UITableViewDataSource, UITableViewDelega
 
             cell.cityStateLabel.text = cityStateString
         }
-       
+        
         return cell
     }
 }

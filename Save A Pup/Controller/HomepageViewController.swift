@@ -26,7 +26,7 @@ extension HomepageViewController: HomeViewDelegate {
         if button.tag == 0 {
             navigationController?.pushViewController(ShelterResultsViewController(viewType: .shelterView), animated: true)
         } else if button.tag == 1 {
-            //navigationController?.pushViewController(ResultsViewController(controllerType: .animal), animated: true)
+            navigationController?.pushViewController(AnimalResultsViewController(viewType: .animalView), animated: true)
         }
     }
 }

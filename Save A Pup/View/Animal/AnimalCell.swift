@@ -24,8 +24,8 @@ class AnimalCell: UITableViewCell {
     var genderLabel: UILabel!
     var nameLabel: UILabel!
     
-    let animalImageView: UIImageView = {
-        let imgView = UIImageView()
+    let animalImageView: ImageLoader = {
+        let imgView = ImageLoader()
         
         imgView.contentMode = .scaleAspectFill
         imgView.clipsToBounds = true
@@ -198,4 +198,22 @@ extension AnimalCell {
         
         return label
     }
+    
+    func resetContent() {
+        self.animalImageView.image = nil
+        self.nameLabel.text = nil
+        self.breedLabel.text = nil
+        self.ageLabel.text = nil
+        self.ageLabel.text = nil
+        self.genderLabel.text = nil
+        self.cityStateLabel.text = nil
+        self.distanceLabel.text = nil
+    }
+    
+    //Override for cell attribute setup
+    
+//    override func prepareForReuse() {
+//        super.prepareForReuse()
+//
+//    }
 }

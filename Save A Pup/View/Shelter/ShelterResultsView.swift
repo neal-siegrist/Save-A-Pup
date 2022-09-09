@@ -8,6 +8,7 @@
 import UIKit
 
 class ShelterResultsView: UIView {
+    
     let listView: UITableView = {
         let listView = UITableView()
         listView.sectionHeaderTopPadding = 0
