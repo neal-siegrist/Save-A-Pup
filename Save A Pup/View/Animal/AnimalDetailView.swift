@@ -12,9 +12,10 @@ class AnimalDetailView: UIView {
     private let HEADER_STACK_PADDING: CGFloat = 20.0
     
     //Heading Variables
-    private var nameLabel, addressLabel, cityStateLabel, distanceLabel: UILabel!
+    private var photoLabel, nameLabel, addressLabel, cityStateLabel, distanceLabel: UILabel!
+    var photoCount = 0
     
-    let imgScrollView: UIScrollView = {
+    var imgScrollView: UIScrollView = {
         let imgScrollView = UIScrollView()
         imgScrollView.isPagingEnabled = true
         imgScrollView.isHidden = true
@@ -288,6 +289,7 @@ class AnimalDetailView: UIView {
     }
     
     private func setupLabels() {
+        photoLabel = setupStandardLabel()
         nameLabel = setupStandardLabel(fontSize: Constants.AnimalDetail.NAME_FONT_SIZE)
         addressLabel = setupStandardLabel()
         cityStateLabel = setupStandardLabel()
@@ -310,8 +312,11 @@ class AnimalDetailView: UIView {
     
     func addImages(urls: [URL]) {
         guard !urls.isEmpty else { return }
+        photoCount = urls.count
+        photoLabel.text = "1 of \(photoCount)"
         
         imgScrollView.isHidden = false
+        photoLabel.isHidden = false
         
         for url in urls {
             let img = ImageLoader()
@@ -337,7 +342,7 @@ class AnimalDetailView: UIView {
         imgScrollView.addSubview(imgStackView)
         
         headerVStack.addArrangedSubview(imgScrollView)
-        
+        headerVStack.addArrangedSubview(photoLabel)
         headerVStack.addArrangedSubview(nameLabel)
         headerVStack.addArrangedSubview(addressLabel)
         headerVStack.addArrangedSubview(cityStateLabel)
@@ -389,9 +394,13 @@ class AnimalDetailView: UIView {
             contentVStack.topAnchor.constraint(equalTo: contentScrollView.topAnchor),
             contentVStack.leadingAnchor.constraint(equalTo: contentScrollView.leadingAnchor),
             contentVStack.bottomAnchor.constraint(equalTo: contentScrollView.bottomAnchor),
-            contentVStack.trailingAnchor.constraint(equalTo: contentScrollView.trailingAnchor),
+            //contentVStack.trailingAnchor.constraint(equalTo: contentScrollView.trailingAnchor),
             contentVStack.widthAnchor.constraint(equalTo: contentScrollView.widthAnchor)
         ])
+    }
+    
+    func updateImageCount(numbered: Int) {
+        photoLabel.text = "\(numbered + 1) of \(photoCount)"
     }
 }
 

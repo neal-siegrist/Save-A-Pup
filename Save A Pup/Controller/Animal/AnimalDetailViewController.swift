@@ -23,7 +23,9 @@ class AnimalDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view = AnimalDetailView()
+        let animalView = AnimalDetailView()
+        animalView.imgScrollView.delegate = self
+        self.view = animalView
         
         retrieveImages()
         setupNavigationController()
@@ -213,5 +215,13 @@ class AnimalDetailViewController: UIViewController {
         }
         
         return attributesString.isEmpty ? nil : attributesString
+    }
+}
+
+extension AnimalDetailViewController: UIScrollViewDelegate {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        guard let detailView = self.view as? AnimalDetailView else { return }
+        
+        detailView.updateImageCount(numbered: Int(scrollView.contentOffset.x/scrollView.frame.size.width))
     }
 }
