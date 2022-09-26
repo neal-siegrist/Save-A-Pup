@@ -15,6 +15,10 @@ struct Constants {
         static let DISTANCE_FONT_SIZE: CGFloat = 12
     }
     
+    struct AnimalDetail {
+        static let NAME_FONT_SIZE: CGFloat = 26
+    }
+    
     struct Colors {
         static let DARK_GREY: String = "darkGrey"
         static let DIVIDER_GREY: String = "dividerGrey"

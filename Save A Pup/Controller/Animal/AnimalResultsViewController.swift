@@ -25,7 +25,24 @@ class AnimalResultsViewController: ResultsViewController {
         
         self.view = AnimalResultsView()
         
+        let loadingSpinner = UIActivityIndicatorView()
+        loadingSpinner.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(loadingSpinner)
+        
+        NSLayoutConstraint.activate([
+            loadingSpinner.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            loadingSpinner.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
+        ])
+        loadingSpinner.startAnimating()
+        
         setupTableView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        guard let currView = self.view as? AnimalResultsView else { return }
+        guard let selectedRow = currView.listView.indexPathForSelectedRow else { return }
+        
+        currView.listView.cellForRow(at: selectedRow)?.isSelected = false
     }
     
     override func receivedLocation(location: CLLocation) {
@@ -40,6 +57,12 @@ class AnimalResultsViewController: ResultsViewController {
                 DispatchQueue.main.async {
                     guard let currView = self.view as? AnimalResultsView else { return }
 
+                    for view in currView.subviews {
+                        if let loadingView = (view as? UIActivityIndicatorView) {
+                            loadingView.stopAnimating()
+                        }
+                    }
+                    
                     currView.listView.reloadData()
                 }
             }
@@ -86,7 +109,7 @@ extension AnimalResultsViewController: UITableViewDataSource, UITableViewDelegat
             cell.animalImageView.loadImage(url: url)
         } else {
             cell.animalImageView.image = UIImage(systemName: "xmark")
-            cell.animalImageView.tintColor = UIColor(named: "welcomeDarkGrey")
+            cell.animalImageView.tintColor = UIColor(named: Constants.Colors.DARK_GREY)
         }
         
         cell.nameLabel.text = animals[indexPath.section].name
@@ -99,5 +122,11 @@ extension AnimalResultsViewController: UITableViewDataSource, UITableViewDelegat
         }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let animal = animalsWrapper.getAnimals()[indexPath.section]
+        
+        navigationController?.pushViewController(AnimalDetailViewController(animal: animal), animated: true)
     }
 }

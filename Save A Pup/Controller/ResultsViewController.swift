@@ -20,6 +20,8 @@ class ResultsViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         
         subscribeToLocation()
+        
+        
     }
     
     required init?(coder: NSCoder) {

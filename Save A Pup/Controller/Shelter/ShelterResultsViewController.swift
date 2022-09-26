@@ -25,6 +25,16 @@ class ShelterResultsViewController: ResultsViewController {
         
         self.view = ShelterResultsView()
         
+        let loadingSpinner = UIActivityIndicatorView()
+        loadingSpinner.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(loadingSpinner)
+        
+        NSLayoutConstraint.activate([
+            loadingSpinner.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            loadingSpinner.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
+        ])
+        loadingSpinner.startAnimating()
+        
         setupTableView()
     }
     
@@ -39,6 +49,12 @@ class ShelterResultsViewController: ResultsViewController {
             try sheltersWrapper.fetchShelters() {
                 DispatchQueue.main.async {
                     guard let currView = self.view as? ShelterResultsView else { return }
+                    
+                    for view in currView.subviews {
+                        if let loadingView = (view as? UIActivityIndicatorView) {
+                            loadingView.stopAnimating()
+                        }
+                    }
                     
                     currView.listView.reloadData()
                 }

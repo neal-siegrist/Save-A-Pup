@@ -53,6 +53,8 @@
 		D9B0FDF028C16C7300F90834 /* PaginationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B0FDEF28C16C7300F90834 /* PaginationInfo.swift */; };
 		D9B0FDF228C16C8500F90834 /* PaginationLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B0FDF128C16C8500F90834 /* PaginationLink.swift */; };
 		D9B0FDF428C16C9200F90834 /* PaginationNextLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B0FDF328C16C9200F90834 /* PaginationNextLink.swift */; };
+		D9FA868728DCCD750005C613 /* AnimalDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FA868628DCCD750005C613 /* AnimalDetailView.swift */; };
+		D9FBC90028DCBBAF00CF968C /* AnimalDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FBC8FF28DCBBAF00CF968C /* AnimalDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +117,8 @@
 		D9B0FDEF28C16C7300F90834 /* PaginationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationInfo.swift; sourceTree = "<group>"; };
 		D9B0FDF128C16C8500F90834 /* PaginationLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationLink.swift; sourceTree = "<group>"; };
 		D9B0FDF328C16C9200F90834 /* PaginationNextLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationNextLink.swift; sourceTree = "<group>"; };
+		D9FA868628DCCD750005C613 /* AnimalDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalDetailView.swift; sourceTree = "<group>"; };
+		D9FBC8FF28DCBBAF00CF968C /* AnimalDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +178,7 @@
 		D924552928B5500700D2C961 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D96A54CF28CBF254004BE63C /* ImageLoader.swift */,
 				D924553B28B937EC00D2C961 /* LocationManager.swift */,
 				D9B0FDCF28BFCB8700F90834 /* Networking.swift */,
 				D9B0FDD128BFCDB600F90834 /* NetworkError.swift */,
@@ -183,7 +188,6 @@
 				D9B0FDC528BE900E00F90834 /* Animals */,
 				D9B0FDE428C16B8D00F90834 /* JSON Decoding */,
 				D9B0FDC628BE901600F90834 /* Shelters */,
-				D96A54CF28CBF254004BE63C /* ImageLoader.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -202,10 +206,10 @@
 			isa = PBXGroup;
 			children = (
 				D924552C28B5509000D2C961 /* HomepageViewController.swift */,
-				D9B0FDBB28B9BFF000F90834 /* ShelterResultsViewController.swift */,
 				D924553928B9379600D2C961 /* ResultsViewController.swift */,
 				D9B0FDBD28B9CAB000F90834 /* ResultsViewType.swift */,
-				D96A54B328C7FDBB004BE63C /* AnimalResultsViewController.swift */,
+				D9FBC8FD28DCBB7300CF968C /* Animal */,
+				D9FBC8FE28DCBB7900CF968C /* Shelter */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -247,6 +251,7 @@
 			children = (
 				D924553F28B9964800D2C961 /* AnimalResultsView.swift */,
 				D9B0FDBF28B9CF7D00F90834 /* AnimalCell.swift */,
+				D9FA868628DCCD750005C613 /* AnimalDetailView.swift */,
 			);
 			path = Animal;
 			sourceTree = "<group>";
@@ -300,6 +305,23 @@
 				D96A54B928C8ECA5004BE63C /* Fetching Shelters */,
 			);
 			path = "JSON Decoding";
+			sourceTree = "<group>";
+		};
+		D9FBC8FD28DCBB7300CF968C /* Animal */ = {
+			isa = PBXGroup;
+			children = (
+				D96A54B328C7FDBB004BE63C /* AnimalResultsViewController.swift */,
+				D9FBC8FF28DCBBAF00CF968C /* AnimalDetailViewController.swift */,
+			);
+			path = Animal;
+			sourceTree = "<group>";
+		};
+		D9FBC8FE28DCBB7900CF968C /* Shelter */ = {
+			isa = PBXGroup;
+			children = (
+				D9B0FDBB28B9BFF000F90834 /* ShelterResultsViewController.swift */,
+			);
+			path = Shelter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -416,6 +438,7 @@
 				D9B0FDCE28BED9E900F90834 /* NetworkingSession.swift in Sources */,
 				D9B0FDEA28C16C2000F90834 /* Address.swift in Sources */,
 				D92454FA28B549C200D2C961 /* AppDelegate.swift in Sources */,
+				D9FA868728DCCD750005C613 /* AnimalDetailView.swift in Sources */,
 				D92454FC28B549C200D2C961 /* SceneDelegate.swift in Sources */,
 				D96A54BE28C8ED37004BE63C /* Animal.swift in Sources */,
 				D9B0FDEC28C16C3500F90834 /* Photo.swift in Sources */,
@@ -430,6 +453,7 @@
 				D96A54BC28C8ED23004BE63C /* AnimalResults.swift in Sources */,
 				D924552F28B550E200D2C961 /* HomepageView.swift in Sources */,
 				D9B0FDBE28B9CAB000F90834 /* ResultsViewType.swift in Sources */,
+				D9FBC90028DCBBAF00CF968C /* AnimalDetailViewController.swift in Sources */,
 				D96A54C228C8ED5D004BE63C /* Color.swift in Sources */,
 				D924552D28B5509000D2C961 /* HomepageViewController.swift in Sources */,
 				D9B0FDD428BFCEBF00F90834 /* ApiKeys.swift in Sources */,

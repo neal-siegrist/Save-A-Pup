@@ -12,7 +12,7 @@ let imageCache = NSCache<NSString, UIImage>()
 
 class ImageLoader: UIImageView {
     
-    var currURL: URL?
+    private var currURL: URL?
     
     let loadingWheel: UIActivityIndicatorView = {
         let view = UIActivityIndicatorView()
