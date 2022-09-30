@@ -20,6 +20,8 @@
 		D924553C28B937EC00D2C961 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924553B28B937EC00D2C961 /* LocationManager.swift */; };
 		D924554028B9964800D2C961 /* AnimalResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924553F28B9964800D2C961 /* AnimalResultsView.swift */; };
 		D924554228B998BD00D2C961 /* ShelterResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924554128B998BD00D2C961 /* ShelterResultsView.swift */; };
+		D939C66728E269C7002D20A9 /* ShelterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D939C66628E269C7002D20A9 /* ShelterDetailViewController.swift */; };
+		D939C66928E269ED002D20A9 /* ShelterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D939C66828E269ED002D20A9 /* ShelterDetailView.swift */; };
 		D939DEA128C56118008C222C /* ShelterResultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D939DEA028C56118008C222C /* ShelterResultsWrapper.swift */; };
 		D96A54B428C7FDBB004BE63C /* AnimalResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96A54B328C7FDBB004BE63C /* AnimalResultsViewController.swift */; };
 		D96A54B628C8EBF5004BE63C /* AnimalResultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96A54B528C8EBF5004BE63C /* AnimalResultsWrapper.swift */; };
@@ -83,6 +85,8 @@
 		D924553B28B937EC00D2C961 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		D924553F28B9964800D2C961 /* AnimalResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalResultsView.swift; sourceTree = "<group>"; };
 		D924554128B998BD00D2C961 /* ShelterResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelterResultsView.swift; sourceTree = "<group>"; };
+		D939C66628E269C7002D20A9 /* ShelterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelterDetailViewController.swift; sourceTree = "<group>"; };
+		D939C66828E269ED002D20A9 /* ShelterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelterDetailView.swift; sourceTree = "<group>"; };
 		D939DEA028C56118008C222C /* ShelterResultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelterResultsWrapper.swift; sourceTree = "<group>"; };
 		D96A54B328C7FDBB004BE63C /* AnimalResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalResultsViewController.swift; sourceTree = "<group>"; };
 		D96A54B528C8EBF5004BE63C /* AnimalResultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalResultsWrapper.swift; sourceTree = "<group>"; };
@@ -261,6 +265,7 @@
 			children = (
 				D924554128B998BD00D2C961 /* ShelterResultsView.swift */,
 				D9B0FDC728BE91EF00F90834 /* ShelterCell.swift */,
+				D939C66828E269ED002D20A9 /* ShelterDetailView.swift */,
 			);
 			path = Shelter;
 			sourceTree = "<group>";
@@ -320,6 +325,7 @@
 			isa = PBXGroup;
 			children = (
 				D9B0FDBB28B9BFF000F90834 /* ShelterResultsViewController.swift */,
+				D939C66628E269C7002D20A9 /* ShelterDetailViewController.swift */,
 			);
 			path = Shelter;
 			sourceTree = "<group>";
@@ -426,6 +432,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D939C66928E269ED002D20A9 /* ShelterDetailView.swift in Sources */,
 				D9B0FDF428C16C9200F90834 /* PaginationNextLink.swift in Sources */,
 				D924554028B9964800D2C961 /* AnimalResultsView.swift in Sources */,
 				D9B0FDC028B9CF7D00F90834 /* AnimalCell.swift in Sources */,
@@ -465,6 +472,7 @@
 				D96A54D028CBF254004BE63C /* ImageLoader.swift in Sources */,
 				D96A54CA28C8EE19004BE63C /* AnimalURLBuilder.swift in Sources */,
 				D924554228B998BD00D2C961 /* ShelterResultsView.swift in Sources */,
+				D939C66728E269C7002D20A9 /* ShelterDetailViewController.swift in Sources */,
 				D9B0FDCC28BE937C00F90834 /* SortOptions.swift in Sources */,
 				D9B0FDEE28C16C5400F90834 /* SocialMedia.swift in Sources */,
 				D9B0FDD228BFCDB600F90834 /* NetworkError.swift in Sources */,

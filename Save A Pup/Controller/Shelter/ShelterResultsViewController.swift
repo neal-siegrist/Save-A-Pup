@@ -38,8 +38,17 @@ class ShelterResultsViewController: ResultsViewController {
         setupTableView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        guard let currView = self.view as? ShelterResultsView else { return }
+        guard let selectedRow = currView.listView.indexPathForSelectedRow else { return }
+        
+        currView.listView.cellForRow(at: selectedRow)?.isSelected = false
+    }
+    
     override func receivedLocation(location: CLLocation) {
         print("Shelter results subclass received location: \(location)")
+        
+        if LocationManager.shared.isFetching { return }
         
         print("Storing new location...")
         sheltersWrapper.urlBuilder.addParameter(parameterName: .location, paramaterValue: "\(location.coordinate.latitude),\(location.coordinate.longitude)")
@@ -117,5 +126,12 @@ extension ShelterResultsViewController: UITableViewDataSource, UITableViewDelega
         }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let shelter = sheltersWrapper.getShelters()[indexPath.section]
+        guard let currView = self.view as? ShelterResultsView else { return }
+        
+        navigationController?.pushViewController(ShelterDetailViewController(shelter: shelter), animated: true)
     }
 }

@@ -19,6 +19,7 @@ class AnimalDetailView: UIView {
         let imgScrollView = UIScrollView()
         imgScrollView.isPagingEnabled = true
         imgScrollView.isHidden = true
+        imgScrollView.showsHorizontalScrollIndicator = false
         imgScrollView.translatesAutoresizingMaskIntoConstraints = false
         return imgScrollView
     }()
@@ -333,7 +334,6 @@ class AnimalDetailView: UIView {
                 img.widthAnchor.constraint(equalTo: imgScrollView.widthAnchor),
                 img.heightAnchor.constraint(equalTo: imgScrollView.heightAnchor)
             ])
-            
         }
     }
     

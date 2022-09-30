@@ -12,7 +12,7 @@ class LocationManager: NSObject {
     public static let shared = LocationManager()
     
     private let locationManager = CLLocationManager()
-    private var isFetching = false
+    var isFetching = false
     @Published var location: CLLocation = CLLocation(latitude: 38.8815959, longitude: -122.0739578)
     
     override private init() {
@@ -50,12 +50,9 @@ extension LocationManager: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("didUpdateLocations called")
-       
         guard let currLocation = locations.last else { return }
-        
-        self.location = currLocation
         self.isFetching = false
+        self.location = currLocation
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

@@ -48,6 +48,8 @@ class AnimalResultsViewController: ResultsViewController {
     override func receivedLocation(location: CLLocation) {
         print("Animal results subclass received location: \(location)")
         
+        if LocationManager.shared.isFetching { return }
+        
         print("Storing new location...")
         animalsWrapper.urlBuilder.addParameter(parameterName: .location, paramaterValue: "\(location.coordinate.latitude),\(location.coordinate.longitude)")
         
