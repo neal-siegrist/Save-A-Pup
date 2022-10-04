@@ -30,6 +30,7 @@ class ShelterDetailViewController: UIViewController {
         retrieveImages()
         setupNavigationController()
         assignShelterValues()
+        addGestureRecognizers()
     }
     
     private func retrieveImages() {
@@ -101,57 +102,22 @@ class ShelterDetailViewController: UIViewController {
 
     
     
-    
-//    func addLabelValues() {
+    private func addGestureRecognizers() {
+        guard let detailView = self.view as? ShelterDetailView else { print("guard failed") ; return }
+        print("in adding gestures")
+        
+        let phoneGesture = UITapGestureRecognizer(target: self, action: #selector(didTapPhone(_:)))
+        detailView.addGesture(stack: .phone, gesture: phoneGesture)
+        
+        let emailGesture = UITapGestureRecognizer(target: self, action: #selector(didTapEmail(_:)))
+        detailView.addGesture(stack: .email, gesture: emailGesture)
 
-//
-//        shelterDetailView.phoneNumber = shelterInfo?.phone
-//        shelterDetailView.email = shelterInfo?.email
-//        shelterDetailView.petfinderWebsite = shelterInfo?.url
-//        shelterDetailView.shelterWebsite = shelterInfo?.website
-//        shelterDetailView.facebook = shelterInfo?.social_media?.facebook
-//        shelterDetailView.twitter = shelterInfo?.social_media?.twitter
-//        shelterDetailView.youtube = shelterInfo?.social_media?.youtube
-//        shelterDetailView.instagram = shelterInfo?.social_media?.instagram
-//        shelterDetailView.pinterest = shelterInfo?.social_media?.pinterest
-//    }
-//
-//    private func cleansePhoneNumber(_ phoneNumber: String?) -> String? {
-//        let cleansedNumber = phoneNumber
-//
-//        if phoneNumber?.rangeOfCharacter(from: .letters) != nil { return nil }
-//        if phoneNumber?.rangeOfCharacter(from: .decimalDigits) == nil { return nil }
-//
-//        return cleansedNumber
-//    }
-//
-//    func addGestureRecognizers() {
-//        let phoneGesture = UITapGestureRecognizer(target: self, action: #selector(didTapPhoneView(_:)))
-//        shelterDetailView.phoneStack.addGestureRecognizer(phoneGesture)
-//
-//        let emailGesture = UITapGestureRecognizer(target: self, action: #selector(didTapEmail(_:)))
-//        shelterDetailView.emailStack.addGestureRecognizer(emailGesture)
-//
-//        let petfinderGesture = UITapGestureRecognizer(target: self, action: #selector(didTapPetfinderWebsite(_:)))
-//        let websiteGesture = UITapGestureRecognizer(target: self, action: #selector(didTapWebsite(_:)))
-//        shelterDetailView.petfinderWebsiteStack.addGestureRecognizer(petfinderGesture)
-//        shelterDetailView.shelterWebsiteStack.addGestureRecognizer(websiteGesture)
-//
-//        let fbGesture = UITapGestureRecognizer(target: self, action: #selector(didTapFacebook(_:)))
-//        shelterDetailView.facebookIcon.addGestureRecognizer(fbGesture)
-//
-//        let twitterGesture = UITapGestureRecognizer(target: self, action: #selector(didTapTwitter(_:)))
-//        shelterDetailView.twitterIcon.addGestureRecognizer(twitterGesture)
-//
-//        let youtubeGesture = UITapGestureRecognizer(target: self, action: #selector(didTapYoutube(_:)))
-//        shelterDetailView.youtubeIcon.addGestureRecognizer(youtubeGesture)
-//
-//        let instagramGesture = UITapGestureRecognizer(target: self, action: #selector(didTapInstagram(_:)))
-//        shelterDetailView.instagramIcon.addGestureRecognizer(instagramGesture)
-//
-//        let pinterestGesture = UITapGestureRecognizer(target: self, action: #selector(didTapPinterest(_:)))
-//        shelterDetailView.pinterestIcon.addGestureRecognizer(pinterestGesture)
-//    }
+        let petfinderGesture = UITapGestureRecognizer(target: self, action: #selector(didTapPetfinderWebsite(_:)))
+        detailView.addGesture(stack: .petfinderWebsite, gesture: petfinderGesture)
+
+        let websiteGesture = UITapGestureRecognizer(target: self, action: #selector(didTapWebsite(_:)))
+        detailView.addGesture(stack: .shelterWebsite, gesture: websiteGesture)
+    }
 }
 
 extension ShelterDetailViewController: UIScrollViewDelegate {
@@ -159,5 +125,62 @@ extension ShelterDetailViewController: UIScrollViewDelegate {
         guard let detailView = self.view as? ShelterDetailView else { return }
 
         detailView.updateImageCount(numbered: Int(scrollView.contentOffset.x/scrollView.frame.size.width))
+    }
+}
+
+extension ShelterDetailViewController: UIGestureRecognizerDelegate {
+    
+    @objc func didTapPhone(_ sender: UITapGestureRecognizer) {
+        
+        guard let detailView = self.view as? ShelterDetailView, let number = detailView.phone else { return }
+        
+        let phoneNumber = number.filter("0123456789".contains(_:))
+        
+        if !phoneNumber.isEmpty {
+            let phoneCallUrl = URL(string: "tel://\(phoneNumber)")
+            
+            if let url = phoneCallUrl, UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url)
+            }
+        }
+    }
+    
+    @objc func didTapEmail(_ sender: UITapGestureRecognizer) {
+        guard let detailView = self.view as? ShelterDetailView, let email = detailView.email else { return }
+        
+        if !email.isEmpty {
+            let emailUrl = URL(string: "mailto:\(email)")
+            
+            if let url = emailUrl, UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url)
+            }
+        }
+        
+    }
+
+    @objc func didTapPetfinderWebsite(_ sender: UITapGestureRecognizer) {
+        guard let detailView = self.view as? ShelterDetailView, let petfinder = detailView.petfinderWebsite else { return }
+        
+        if !petfinder.isEmpty {
+            let petfinderURL = URL(string: petfinder)
+            
+            if let url = petfinderURL, UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url)
+            }
+        }
+        
+    }
+    
+    @objc func didTapWebsite(_ sender: UITapGestureRecognizer) {
+        guard let detailView = self.view as? ShelterDetailView, let shelterSite = detailView.shelterWebsite else { return }
+        
+        if !shelterSite.isEmpty {
+            let shelterURL = URL(string: shelterSite)
+            
+            if let url = shelterURL, UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url)
+            }
+        }
+        
     }
 }

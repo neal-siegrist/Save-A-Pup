@@ -7,13 +7,7 @@
 
 import UIKit
 
-class ShelterDetailView: UIView {
-    
-    private enum Icons: String {
-        case phone
-        case email = "envelope"
-        case website = "globe"
-    }
+class ShelterDetailView: DetailView {
     
     private let HEADER_STACK_PADDING: CGFloat = 20.0
 
@@ -53,6 +47,7 @@ class ShelterDetailView: UIView {
         dividerBar.translatesAutoresizingMaskIntoConstraints = false
         return dividerBar
     }()
+
     
     //Content Variables
     private var phoneLabel, emailLabel, petfinderWebsiteLabel, shelterWebsiteLabel: UILabel!
@@ -260,51 +255,18 @@ class ShelterDetailView: UIView {
     func updateImageCount(numbered: Int) {
         photoLabel.text = "\(numbered + 1) of \(photoCount)"
     }
-}
-
-extension ShelterDetailView {
     
-    private func setupStandardLabel(fontSize: CGFloat = 12, labelIsHidden: Bool = true, color: String = Constants.Colors.DARK_GREY, defaultText: String? = nil) -> UILabel {
-        let label = UILabel()
-        label.numberOfLines = 0
-        label.font = UIFont(name: Constants.Fonts.OPEN_SANS_BOLD, size: fontSize)
-        label.textColor = UIColor(named: color)
-        label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.isHidden = labelIsHidden
-        label.text = defaultText
-        return label
-    }
-    
-    private func generateIconStack(icon: Icons, label: UILabel) -> UIStackView {
-        let stack = UIStackView()
-        stack.axis = .horizontal
-        stack.distribution = .equalSpacing
-        stack.alignment = .center
-        stack.spacing = 5.0
-        stack.isUserInteractionEnabled = true
-        stack.isHidden = true
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        
-        stack.addArrangedSubview(generateIcon(icon: icon))
-        stack.addArrangedSubview(label)
-        
-        return stack
-    }
-    
-    private func generateIcon(icon: Icons) -> UIImageView {
-        let phoneIcon = UIImageView()
-        phoneIcon.image = UIImage(systemName: icon.rawValue)
-        phoneIcon.contentMode = .scaleAspectFit
-        phoneIcon.tintColor = .gray
-        phoneIcon.translatesAutoresizingMaskIntoConstraints = false
-        return phoneIcon
-    }
-    
-    private func cleansePhone(phoneNumber: String?) -> String? {
-    
-        guard phoneNumber?.rangeOfCharacter(from: .letters) == nil, phoneNumber?.rangeOfCharacter(from: .decimalDigits) != nil else { return nil }
-        
-        return phoneNumber
+    func addGesture(stack: DetailStacks, gesture: UITapGestureRecognizer) {
+        switch stack {
+        case .phone:
+            print("adding phone gesture")
+            phoneStack.addGestureRecognizer(gesture)
+        case .email:
+            emailStack.addGestureRecognizer(gesture)
+        case .petfinderWebsite:
+            petfinderWebsiteStack.addGestureRecognizer(gesture)
+        case .shelterWebsite:
+            shelterWebsiteStack.addGestureRecognizer(gesture)
+        }
     }
 }

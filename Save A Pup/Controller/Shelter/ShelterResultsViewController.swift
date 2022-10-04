@@ -130,8 +130,41 @@ extension ShelterResultsViewController: UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let shelter = sheltersWrapper.getShelters()[indexPath.section]
-        guard let currView = self.view as? ShelterResultsView else { return }
+        //guard let currView = self.view as? ShelterResultsView else { return }
         
         navigationController?.pushViewController(ShelterDetailViewController(shelter: shelter), animated: true)
+    }
+}
+
+extension ShelterResultsViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard let currView = self.view as? ShelterResultsView else { fatalError("The view is not a 'ShelterResultsView'") }
+        
+        let position = scrollView.contentOffset.y
+        let scrollViewHeight = scrollView.frame.height
+        let contentSizeHeight = currView.listView.contentSize.height
+        
+        if (position + scrollViewHeight) > (contentSizeHeight - 100) && sheltersWrapper.getSheltersCount() > 0 {
+            print("time to add loading spinner")
+        }
+        
+    }
+    
+    private func createSpinner() -> UIView {
+        guard let currView = self.view as? ShelterResultsView else { fatalError("The view is not a 'ShelterResultsView'") }
+        
+        if let currentSpinner = currView.listView.tableFooterView {
+            currentSpinner.isHidden = false
+            return currentSpinner
+        }
+
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100))
+
+        let spinner = UIActivityIndicatorView()
+        spinner.center = footerView.center
+        footerView.addSubview(spinner)
+        spinner.startAnimating()
+
+        return footerView
     }
 }

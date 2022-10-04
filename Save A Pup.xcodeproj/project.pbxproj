@@ -22,6 +22,9 @@
 		D924554228B998BD00D2C961 /* ShelterResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924554128B998BD00D2C961 /* ShelterResultsView.swift */; };
 		D939C66728E269C7002D20A9 /* ShelterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D939C66628E269C7002D20A9 /* ShelterDetailViewController.swift */; };
 		D939C66928E269ED002D20A9 /* ShelterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D939C66828E269ED002D20A9 /* ShelterDetailView.swift */; };
+		D939C66B28EB9296002D20A9 /* ContactIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = D939C66A28EB9296002D20A9 /* ContactIcons.swift */; };
+		D939C66D28EB92BD002D20A9 /* DetailStacks.swift in Sources */ = {isa = PBXBuildFile; fileRef = D939C66C28EB92BD002D20A9 /* DetailStacks.swift */; };
+		D939C66F28EB9397002D20A9 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D939C66E28EB9397002D20A9 /* DetailView.swift */; };
 		D939DEA128C56118008C222C /* ShelterResultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D939DEA028C56118008C222C /* ShelterResultsWrapper.swift */; };
 		D96A54B428C7FDBB004BE63C /* AnimalResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96A54B328C7FDBB004BE63C /* AnimalResultsViewController.swift */; };
 		D96A54B628C8EBF5004BE63C /* AnimalResultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96A54B528C8EBF5004BE63C /* AnimalResultsWrapper.swift */; };
@@ -87,6 +90,9 @@
 		D924554128B998BD00D2C961 /* ShelterResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelterResultsView.swift; sourceTree = "<group>"; };
 		D939C66628E269C7002D20A9 /* ShelterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelterDetailViewController.swift; sourceTree = "<group>"; };
 		D939C66828E269ED002D20A9 /* ShelterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelterDetailView.swift; sourceTree = "<group>"; };
+		D939C66A28EB9296002D20A9 /* ContactIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactIcons.swift; sourceTree = "<group>"; };
+		D939C66C28EB92BD002D20A9 /* DetailStacks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailStacks.swift; sourceTree = "<group>"; };
+		D939C66E28EB9397002D20A9 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		D939DEA028C56118008C222C /* ShelterResultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelterResultsWrapper.swift; sourceTree = "<group>"; };
 		D96A54B328C7FDBB004BE63C /* AnimalResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalResultsViewController.swift; sourceTree = "<group>"; };
 		D96A54B528C8EBF5004BE63C /* AnimalResultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalResultsWrapper.swift; sourceTree = "<group>"; };
@@ -182,6 +188,8 @@
 		D924552928B5500700D2C961 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D939C66A28EB9296002D20A9 /* ContactIcons.swift */,
+				D939C66C28EB92BD002D20A9 /* DetailStacks.swift */,
 				D96A54CF28CBF254004BE63C /* ImageLoader.swift */,
 				D924553B28B937EC00D2C961 /* LocationManager.swift */,
 				D9B0FDCF28BFCB8700F90834 /* Networking.swift */,
@@ -199,6 +207,7 @@
 		D924552A28B5501100D2C961 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D939C66E28EB9397002D20A9 /* DetailView.swift */,
 				D924552E28B550E200D2C961 /* HomepageView.swift */,
 				D9B0FDC128B9D1CD00F90834 /* Animal */,
 				D9B0FDC228B9D1D700F90834 /* Shelter */,
@@ -443,6 +452,7 @@
 				D96A54C428C8ED77004BE63C /* AnimalAttribute.swift in Sources */,
 				D9B0FDD028BFCB8700F90834 /* Networking.swift in Sources */,
 				D9B0FDCE28BED9E900F90834 /* NetworkingSession.swift in Sources */,
+				D939C66D28EB92BD002D20A9 /* DetailStacks.swift in Sources */,
 				D9B0FDEA28C16C2000F90834 /* Address.swift in Sources */,
 				D92454FA28B549C200D2C961 /* AppDelegate.swift in Sources */,
 				D9FA868728DCCD750005C613 /* AnimalDetailView.swift in Sources */,
@@ -456,6 +466,7 @@
 				D9B0FDE828C16BC900F90834 /* ShelterResults.swift in Sources */,
 				D96A54B428C7FDBB004BE63C /* AnimalResultsViewController.swift in Sources */,
 				D96A54C828C8ED9D004BE63C /* Contact.swift in Sources */,
+				D939C66F28EB9397002D20A9 /* DetailView.swift in Sources */,
 				D9B0FDC828BE91EF00F90834 /* ShelterCell.swift in Sources */,
 				D96A54BC28C8ED23004BE63C /* AnimalResults.swift in Sources */,
 				D924552F28B550E200D2C961 /* HomepageView.swift in Sources */,
@@ -469,6 +480,7 @@
 				D96A54C628C8ED8B004BE63C /* AnimalEnvironment.swift in Sources */,
 				D9B0FDF028C16C7300F90834 /* PaginationInfo.swift in Sources */,
 				D924553A28B9379600D2C961 /* ResultsViewController.swift in Sources */,
+				D939C66B28EB9296002D20A9 /* ContactIcons.swift in Sources */,
 				D96A54D028CBF254004BE63C /* ImageLoader.swift in Sources */,
 				D96A54CA28C8EE19004BE63C /* AnimalURLBuilder.swift in Sources */,
 				D924554228B998BD00D2C961 /* ShelterResultsView.swift in Sources */,

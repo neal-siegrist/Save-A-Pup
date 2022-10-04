@@ -19,7 +19,7 @@ class AnimalDetailViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,6 +30,7 @@ class AnimalDetailViewController: UIViewController {
         retrieveImages()
         setupNavigationController()
         assignAnimalValues()
+        addGestureRecognizers()
     }
     
     private func retrieveImages() {
@@ -81,6 +82,10 @@ class AnimalDetailViewController: UIViewController {
         detailView.size = animal.size
         detailView.coat = animal.coat
         detailView.attributes = generateAttributesText()
+        
+        detailView.phone = animal.contact?.phone
+        detailView.email = animal.contact?.email
+        detailView.petfinderWebsite = animal.url
     }
     
     private func generateCityStateText() -> String? {
@@ -216,6 +221,21 @@ class AnimalDetailViewController: UIViewController {
         
         return attributesString.isEmpty ? nil : attributesString
     }
+    
+    private func addGestureRecognizers() {
+        guard let detailView = self.view as? AnimalDetailView else { print("guard failed") ; return }
+        print("in adding gestures")
+        
+        let phoneGesture = UITapGestureRecognizer(target: self, action: #selector(didTapPhone(_:)))
+        detailView.addGesture(stack: .phone, gesture: phoneGesture)
+        
+        let emailGesture = UITapGestureRecognizer(target: self, action: #selector(didTapEmail(_:)))
+        detailView.addGesture(stack: .email, gesture: emailGesture)
+
+        let petfinderGesture = UITapGestureRecognizer(target: self, action: #selector(didTapPetfinderWebsite(_:)))
+        detailView.addGesture(stack: .petfinderWebsite, gesture: petfinderGesture)
+
+    }
 }
 
 extension AnimalDetailViewController: UIScrollViewDelegate {
@@ -224,4 +244,49 @@ extension AnimalDetailViewController: UIScrollViewDelegate {
         
         detailView.updateImageCount(numbered: Int(scrollView.contentOffset.x/scrollView.frame.size.width))
     }
+}
+
+extension AnimalDetailViewController: UIGestureRecognizerDelegate {
+    
+    @objc func didTapPhone(_ sender: UITapGestureRecognizer) {
+        
+        guard let detailView = self.view as? AnimalDetailView, let number = detailView.phone else { return }
+        
+        let phoneNumber = number.filter("0123456789".contains(_:))
+        
+        if !phoneNumber.isEmpty {
+            let phoneCallUrl = URL(string: "tel://\(phoneNumber)")
+            
+            if let url = phoneCallUrl, UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url)
+            }
+        }
+    }
+    
+    @objc func didTapEmail(_ sender: UITapGestureRecognizer) {
+        guard let detailView = self.view as? AnimalDetailView, let email = detailView.email else { return }
+        
+        if !email.isEmpty {
+            let emailUrl = URL(string: "mailto:\(email)")
+            
+            if let url = emailUrl, UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url)
+            }
+        }
+        
+    }
+
+    @objc func didTapPetfinderWebsite(_ sender: UITapGestureRecognizer) {
+        guard let detailView = self.view as? AnimalDetailView, let petfinder = detailView.petfinderWebsite else { return }
+        
+        if !petfinder.isEmpty {
+            let petfinderURL = URL(string: petfinder)
+            
+            if let url = petfinderURL, UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url)
+            }
+        }
+        
+    }
+    
 }

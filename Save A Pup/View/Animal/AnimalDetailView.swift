@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AnimalDetailView: UIView {
+class AnimalDetailView: DetailView {
     
     private let HEADER_STACK_PADDING: CGFloat = 20.0
     
@@ -49,7 +49,9 @@ class AnimalDetailView: UIView {
     }()
     
     //Content Variables
-    private var statusLabel, typeLabel, breedLabel, colorLabel, ageLabel, genderLabel, sizeLabel, coatLabel, attributesLabel, environmentLabel, tagsLabel, emailLabel, phoneLabel: UILabel!
+    private var statusLabel, typeLabel, breedLabel, colorLabel, ageLabel, genderLabel, sizeLabel, coatLabel, attributesLabel, environmentLabel, tagsLabel, emailLabel, phoneLabel, petfinderWebsiteLabel, shelterWebsiteLabel: UILabel!
+    private var phoneStack, emailStack, petfinderWebsiteStack, shelterWebsiteStack: UIStackView!
+    private var petfinderURL, shelterURL: String?
     
     private let contentScrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -275,6 +277,48 @@ class AnimalDetailView: UIView {
         }
     }
     
+    var phone: String? {
+        get {
+            return phoneLabel.text
+        }
+        set {
+            let number = cleansePhone(phoneNumber: newValue)
+            print(number)
+            phoneLabel.text = number
+            phoneStack.isHidden = number == nil ? true : false
+        }
+    }
+    
+    var email: String? {
+        get {
+            return emailLabel.text
+        }
+        set {
+            emailLabel.text = newValue
+            emailStack.isHidden = newValue == nil ? true : false
+        }
+    }
+    
+    var petfinderWebsite: String? {
+        get {
+            return petfinderURL
+        }
+        set {
+            petfinderURL = newValue
+            petfinderWebsiteStack.isHidden = newValue == nil ? true : false
+        }
+    }
+    
+    var shelterWebsite: String? {
+        get {
+            return shelterURL
+        }
+        set {
+            shelterURL = newValue
+            shelterWebsiteStack.isHidden = newValue == nil ? true : false
+        }
+    }
+    
     //MARK: - Setup Functions
     init() {
         super.init(frame: .zero)
@@ -307,8 +351,11 @@ class AnimalDetailView: UIView {
         attributesLabel = setupStandardLabel()
         environmentLabel = setupStandardLabel()
         tagsLabel = setupStandardLabel()
-        emailLabel = setupStandardLabel()
-        phoneLabel = setupStandardLabel()
+        
+        phoneLabel = setupStandardLabel(labelIsHidden: false)
+        emailLabel = setupStandardLabel(labelIsHidden: false)
+        petfinderWebsiteLabel = setupStandardLabel(labelIsHidden: false, color: Constants.Colors.LINK_PURPLE, defaultText: "Petfinder Website")
+        shelterWebsiteLabel = setupStandardLabel(labelIsHidden: false, color: Constants.Colors.LINK_PURPLE, defaultText: "Shelter Website")
     }
     
     func addImages(urls: [URL]) {
@@ -369,6 +416,11 @@ class AnimalDetailView: UIView {
     }
     
     private func setupContentStack() {
+        phoneStack = generateIconStack(icon: .phone, label: phoneLabel)
+        emailStack = generateIconStack(icon: .email, label: emailLabel)
+        petfinderWebsiteStack = generateIconStack(icon: .website, label: petfinderWebsiteLabel)
+        shelterWebsiteStack = generateIconStack(icon: .website, label: shelterWebsiteLabel)
+        
         self.addSubview(contentScrollView)
         contentScrollView.addSubview(contentVStack)
         
@@ -383,8 +435,11 @@ class AnimalDetailView: UIView {
         contentVStack.addArrangedSubview(attributesLabel)
         contentVStack.addArrangedSubview(environmentLabel)
         contentVStack.addArrangedSubview(tagsLabel)
-        contentVStack.addArrangedSubview(emailLabel)
-        contentVStack.addArrangedSubview(phoneLabel)
+        
+        contentVStack.addArrangedSubview(phoneStack)
+        contentVStack.addArrangedSubview(emailStack)
+        contentVStack.addArrangedSubview(petfinderWebsiteStack)
+        contentVStack.addArrangedSubview(shelterWebsiteStack)
         
         NSLayoutConstraint.activate([
             contentScrollView.topAnchor.constraint(equalTo: headerVStack.bottomAnchor, constant: HEADER_STACK_PADDING),
@@ -402,21 +457,18 @@ class AnimalDetailView: UIView {
     func updateImageCount(numbered: Int) {
         photoLabel.text = "\(numbered + 1) of \(photoCount)"
     }
-}
-
-
-//MARK: - Helper Functions
-
-extension AnimalDetailView {
     
-    private func setupStandardLabel(fontSize: CGFloat = 12, labelIsHidden: Bool = true) -> UILabel {
-        let label = UILabel()
-        label.numberOfLines = 0
-        label.font = UIFont(name: Constants.Fonts.OPEN_SANS_BOLD, size: fontSize)
-        label.textColor = UIColor(named: Constants.Colors.DARK_GREY)
-        label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.isHidden = labelIsHidden
-        return label
+    func addGesture(stack: DetailStacks, gesture: UITapGestureRecognizer) {
+        switch stack {
+        case .phone:
+            print("adding phone gesture")
+            phoneStack.addGestureRecognizer(gesture)
+        case .email:
+            emailStack.addGestureRecognizer(gesture)
+        case .petfinderWebsite:
+            petfinderWebsiteStack.addGestureRecognizer(gesture)
+        case .shelterWebsite:
+            shelterWebsiteStack.addGestureRecognizer(gesture)
+        }
     }
 }
