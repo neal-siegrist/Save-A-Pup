@@ -12,6 +12,8 @@ class ShelterResultsViewController: ResultsViewController {
     
     var sheltersWrapper: ShelterResultsWrapper = ShelterResultsWrapper()
     
+    var isFetchingMoreData = false
+    
     override init(viewType: ResultsViewType) {
         super.init(viewType: viewType)
     }
@@ -144,10 +146,25 @@ extension ShelterResultsViewController: UIScrollViewDelegate {
         let scrollViewHeight = scrollView.frame.height
         let contentSizeHeight = currView.listView.contentSize.height
         
-        if (position + scrollViewHeight) > (contentSizeHeight - 100) && sheltersWrapper.getSheltersCount() > 0 {
-            print("time to add loading spinner")
+        if (position + scrollViewHeight) > (contentSizeHeight - 100) && sheltersWrapper.getSheltersCount() > 0 && !isFetchingMoreData && sheltersWrapper.isNextPageAvailable() {
+            currView.listView.tableFooterView = createSpinner()
+            isFetchingMoreData = true
+            
+            //Fetch more shelters
+            do {
+                try sheltersWrapper.fetchShelters(isFetchingNextPage: true) { [weak self] in
+                    DispatchQueue.main.async {
+                        guard let currView = self?.view as? ShelterResultsView else { return }
+                        
+                        currView.listView.tableFooterView?.isHidden = true
+                        currView.listView.reloadData()
+                        self?.isFetchingMoreData = false
+                    }
+                }
+            } catch {
+                print("Error occured fetching shelters. Error:\(error.localizedDescription)")
+            }
         }
-        
     }
     
     private func createSpinner() -> UIView {

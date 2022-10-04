@@ -47,6 +47,7 @@ struct Constants {
     struct NetworkingConstants {
         static let animalApiUrl: String = "https://api.petfinder.com/v2/animals"
         static let apiTokenUrl: String = "https://api.petfinder.com/v2/oauth2/token"
+        static let baseURL: String = "https://api.petfinder.com"
         static let shelterApiUrl: String = "https://api.petfinder.com/v2/organizations"
     }
     

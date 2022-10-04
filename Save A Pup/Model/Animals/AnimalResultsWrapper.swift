@@ -10,29 +10,60 @@ import Foundation
 class AnimalResultsWrapper {
     
     private var results: AnimalResults?
+    private var pagination: PaginationInfo?
+    private var nextPage: String?
+    private var animals: [Animal] = []
  
     let urlBuilder: AnimalURLBuilder = AnimalURLBuilder()
     let networkingSession: NetworkingSession = NetworkingSession<AnimalResults>()
     
     func getAnimals() -> [Animal] {
-        return results?.animals ?? []
+        return animals
     }
     
     func getAnimalsCount() -> Int {
-        return results?.animals?.count ?? 0
+        return animals.count
     }
     
-    func fetchAnimals(completion: @escaping () -> Void) throws {
-        guard let url = URL(string: urlBuilder.constructURL()) else { throw NetworkError.badUrl }
+    func fetchAnimals(isFetchingNextPage: Bool = false, completion: @escaping () -> Void) throws {
         
-        networkingSession.request(url: url) { result in
+        let url: URL?
+        
+        if isFetchingNextPage {
+            if let nextPage = nextPage {
+                url = URL(string: "\(Constants.NetworkingConstants.baseURL)\(nextPage)")
+            } else {
+                throw NetworkError.badUrl
+            }
+        } else {
+            url = URL(string: urlBuilder.constructURL())
+        }
+        
+        guard let validURL = url else { throw NetworkError.badUrl }
+        
+        networkingSession.request(url: validURL) { [weak self] result in
             switch result {
             case .success(let result):
-                self.results = result
+                
+                let newAnimals = result.animals ?? [Animal]()
+                
+                if isFetchingNextPage {
+                    self?.animals.append(contentsOf: newAnimals)
+                } else {
+                    self?.animals = newAnimals
+                }
+                
+                self?.pagination = result.pagination
+                self?.nextPage = self?.pagination?._links?.next?.href
+                
                 completion()
             case .failure(let error):
                 print(error)
             }
         }
+    }
+    
+    func isNextPageAvailable() -> Bool {
+        return nextPage != nil && !nextPage!.isEmpty
     }
 }

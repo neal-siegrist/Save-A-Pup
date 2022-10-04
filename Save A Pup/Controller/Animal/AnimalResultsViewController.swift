@@ -11,6 +11,7 @@ import CoreLocation
 class AnimalResultsViewController: ResultsViewController {
     
     var animalsWrapper: AnimalResultsWrapper = AnimalResultsWrapper()
+    private var isFetchingMoreData = false
     
     override init(viewType: ResultsViewType) {
         super.init(viewType: viewType)
@@ -130,5 +131,53 @@ extension AnimalResultsViewController: UITableViewDataSource, UITableViewDelegat
         let animal = animalsWrapper.getAnimals()[indexPath.section]
         
         navigationController?.pushViewController(AnimalDetailViewController(animal: animal), animated: true)
+    }
+}
+
+extension AnimalResultsViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard let currView = self.view as? AnimalResultsView else { fatalError("The view is not a 'AnimalResultsView'") }
+        
+        let position = scrollView.contentOffset.y
+        let scrollViewHeight = scrollView.frame.height
+        let contentSizeHeight = currView.listView.contentSize.height
+        
+        if (position + scrollViewHeight) > (contentSizeHeight - 100) && animalsWrapper.getAnimalsCount() > 0 && !isFetchingMoreData && animalsWrapper.isNextPageAvailable() {
+            currView.listView.tableFooterView = createSpinner()
+            isFetchingMoreData = true
+            
+            //Fetch more shelters
+            do {
+                try animalsWrapper.fetchAnimals(isFetchingNextPage: true) { [weak self] in
+                    DispatchQueue.main.async {
+                        guard let currView = self?.view as? AnimalResultsView else { return }
+                        
+                        currView.listView.tableFooterView?.isHidden = true
+                        currView.listView.reloadData()
+                        self?.isFetchingMoreData = false
+                    }
+                }
+            } catch {
+                print("Error occured fetching shelters. Error:\(error.localizedDescription)")
+            }
+        }
+    }
+    
+    private func createSpinner() -> UIView {
+        guard let currView = self.view as? AnimalResultsView else { fatalError("The view is not a 'AnimalResultsView'") }
+        
+        if let currentSpinner = currView.listView.tableFooterView {
+            currentSpinner.isHidden = false
+            return currentSpinner
+        }
+
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100))
+
+        let spinner = UIActivityIndicatorView()
+        spinner.center = footerView.center
+        footerView.addSubview(spinner)
+        spinner.startAnimating()
+
+        return footerView
     }
 }

@@ -283,7 +283,7 @@ class AnimalDetailView: DetailView {
         }
         set {
             let number = cleansePhone(phoneNumber: newValue)
-            print(number)
+            
             phoneLabel.text = number
             phoneStack.isHidden = number == nil ? true : false
         }
@@ -461,7 +461,6 @@ class AnimalDetailView: DetailView {
     func addGesture(stack: DetailStacks, gesture: UITapGestureRecognizer) {
         switch stack {
         case .phone:
-            print("adding phone gesture")
             phoneStack.addGestureRecognizer(gesture)
         case .email:
             emailStack.addGestureRecognizer(gesture)
