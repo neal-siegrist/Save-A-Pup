@@ -56,18 +56,13 @@ class ResultsViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         
         let leftImage = UIImage(named: "LeftBarCross.png")
-        let rightImage = UIImage(named: "Search.png")
         let centerImage = viewType == .animalView ? UIImage(named: "Animals.png") : UIImage(named: "Shelters.png")
         
         let leftImageAction = UIAction(title: "Back") { (action) in
             self.navigationController?.popViewController(animated: true)
         }
-        let rightImageAction = UIAction(title: "Search") { (action) in
-            
-        }
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "", image: leftImage, primaryAction: leftImageAction, menu: nil)
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "", image: rightImage, primaryAction: rightImageAction, menu: nil)
         self.navigationItem.titleView = UIImageView(image: centerImage)
         self.navigationController?.navigationBar.tintColor = .gray
     }

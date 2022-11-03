@@ -119,6 +119,13 @@ class ShelterCell: UITableViewCell {
         self.layer.borderWidth = 1.0
         self.layer.borderColor = CGColor(red: 0.69, green: 0.73, blue: 0.78, alpha: 100.0)
     }
+    
+    func resetCellData() {
+        nameLabel.text = nil
+        addressLabel.text = nil
+        cityStateLabel.text = nil
+        distanceLabel.text = nil
+    }
 }
 
 // MARK: - Helper Functions

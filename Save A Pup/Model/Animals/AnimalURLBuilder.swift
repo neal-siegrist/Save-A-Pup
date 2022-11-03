@@ -46,11 +46,17 @@ class AnimalURLBuilder: URLBuilder {
         stringValues[parameterName.rawValue] = paramaterValue
     }
     
+    func clearParameters() {
+        stringValues.removeAll()
+    }
+    
     func constructURL() -> String {
         var urlString = Constants.NetworkingConstants.animalApiUrl
         var paramsAdded = false
         
         for (param, value) in stringValues {
+            print(param, value)
+            
             if !paramsAdded {
                 urlString.append("?")
                 paramsAdded = true
@@ -75,6 +81,8 @@ class AnimalURLBuilder: URLBuilder {
         urlString.append("limit=\(limit)&page=\(page)")
         
         urlString = urlString.replacingOccurrences(of: " ", with: "%20")
+        
+        print(urlString)
         
         return urlString
     }

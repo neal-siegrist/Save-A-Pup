@@ -14,6 +14,14 @@ class ShelterResultsViewController: ResultsViewController {
     
     var isFetchingMoreData = false
     
+    let loadingSpinner: UIActivityIndicatorView = {
+        let view = UIActivityIndicatorView()
+        view.stopAnimating()
+        view.hidesWhenStopped = true
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     override init(viewType: ResultsViewType) {
         super.init(viewType: viewType)
     }
@@ -27,8 +35,6 @@ class ShelterResultsViewController: ResultsViewController {
         
         self.view = ShelterResultsView()
         
-        let loadingSpinner = UIActivityIndicatorView()
-        loadingSpinner.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(loadingSpinner)
         
         NSLayoutConstraint.activate([
@@ -38,6 +44,7 @@ class ShelterResultsViewController: ResultsViewController {
         loadingSpinner.startAnimating()
         
         setupTableView()
+        setupSearchButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,6 +52,16 @@ class ShelterResultsViewController: ResultsViewController {
         guard let selectedRow = currView.listView.indexPathForSelectedRow else { return }
         
         currView.listView.cellForRow(at: selectedRow)?.isSelected = false
+    }
+    
+    func setupSearchButton() {
+        let rightImage = UIImage(named: "Search.png")
+        
+        let rightImageAction = UIAction(title: "Search") { (action) in
+            self.navigationController?.pushViewController(ShelterSearchController(shelterVC: self), animated: true)
+        }
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "", image: rightImage, primaryAction: rightImageAction, menu: nil)
     }
     
     override func receivedLocation(location: CLLocation) {
@@ -56,16 +73,18 @@ class ShelterResultsViewController: ResultsViewController {
         sheltersWrapper.urlBuilder.addParameter(parameterName: .location, paramaterValue: "\(location.coordinate.latitude),\(location.coordinate.longitude)")
         
         //Fetch shelters and update UI
+        updateResults()
+    }
+    
+    func updateResults() {
+        loadingSpinner.startAnimating()
+        
         do {
             try sheltersWrapper.fetchShelters() {
-                DispatchQueue.main.async {
-                    guard let currView = self.view as? ShelterResultsView else { return }
+                DispatchQueue.main.async { [weak self] in
+                    guard let currView = self?.view as? ShelterResultsView else { return }
                     
-                    for view in currView.subviews {
-                        if let loadingView = (view as? UIActivityIndicatorView) {
-                            loadingView.stopAnimating()
-                        }
-                    }
+                    self?.loadingSpinner.stopAnimating()
                     
                     currView.listView.reloadData()
                 }
@@ -106,6 +125,8 @@ extension ShelterResultsViewController: UITableViewDataSource, UITableViewDelega
         
         let shelters = sheltersWrapper.getShelters()
         let cell = currView.listView.dequeueReusableCell(withIdentifier: ShelterCell.CELL_IDENTIFIER) as! ShelterCell
+        
+        cell.resetCellData()
         
         cell.nameLabel.text = shelters[indexPath.section].name
 

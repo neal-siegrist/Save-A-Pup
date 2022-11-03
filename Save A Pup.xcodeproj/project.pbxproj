@@ -26,6 +26,8 @@
 		D939C66D28EB92BD002D20A9 /* DetailStacks.swift in Sources */ = {isa = PBXBuildFile; fileRef = D939C66C28EB92BD002D20A9 /* DetailStacks.swift */; };
 		D939C66F28EB9397002D20A9 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D939C66E28EB9397002D20A9 /* DetailView.swift */; };
 		D939DEA128C56118008C222C /* ShelterResultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D939DEA028C56118008C222C /* ShelterResultsWrapper.swift */; };
+		D967CF3C28EDECE3000129AE /* AnimalSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D967CF3B28EDECE3000129AE /* AnimalSearchController.swift */; };
+		D967CF3E28EDEDAA000129AE /* AnimalSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D967CF3D28EDEDAA000129AE /* AnimalSearchView.swift */; };
 		D96A54B428C7FDBB004BE63C /* AnimalResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96A54B328C7FDBB004BE63C /* AnimalResultsViewController.swift */; };
 		D96A54B628C8EBF5004BE63C /* AnimalResultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96A54B528C8EBF5004BE63C /* AnimalResultsWrapper.swift */; };
 		D96A54BC28C8ED23004BE63C /* AnimalResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96A54BB28C8ED23004BE63C /* AnimalResults.swift */; };
@@ -58,6 +60,12 @@
 		D9B0FDF028C16C7300F90834 /* PaginationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B0FDEF28C16C7300F90834 /* PaginationInfo.swift */; };
 		D9B0FDF228C16C8500F90834 /* PaginationLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B0FDF128C16C8500F90834 /* PaginationLink.swift */; };
 		D9B0FDF428C16C9200F90834 /* PaginationNextLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B0FDF328C16C9200F90834 /* PaginationNextLink.swift */; };
+		D9C2C108290AEB86004CB44A /* PickerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C2C107290AEB86004CB44A /* PickerOptions.swift */; };
+		D9C2C10A290C98C5004CB44A /* LocationSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C2C109290C98C5004CB44A /* LocationSearchController.swift */; };
+		D9C2C10C29120B6F004CB44A /* ShelterSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C2C10B29120B6F004CB44A /* ShelterSearchController.swift */; };
+		D9C2C10E29120BAA004CB44A /* LocationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C2C10D29120BAA004CB44A /* LocationData.swift */; };
+		D9C2C11029120C51004CB44A /* ShelterSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C2C10F29120C51004CB44A /* ShelterSearchView.swift */; };
+		D9C2C11229121078004CB44A /* ShelterLocationSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C2C11129121078004CB44A /* ShelterLocationSearchController.swift */; };
 		D9FA868728DCCD750005C613 /* AnimalDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FA868628DCCD750005C613 /* AnimalDetailView.swift */; };
 		D9FBC90028DCBBAF00CF968C /* AnimalDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FBC8FF28DCBBAF00CF968C /* AnimalDetailViewController.swift */; };
 /* End PBXBuildFile section */
@@ -94,6 +102,8 @@
 		D939C66C28EB92BD002D20A9 /* DetailStacks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailStacks.swift; sourceTree = "<group>"; };
 		D939C66E28EB9397002D20A9 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		D939DEA028C56118008C222C /* ShelterResultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelterResultsWrapper.swift; sourceTree = "<group>"; };
+		D967CF3B28EDECE3000129AE /* AnimalSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalSearchController.swift; sourceTree = "<group>"; };
+		D967CF3D28EDEDAA000129AE /* AnimalSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalSearchView.swift; sourceTree = "<group>"; };
 		D96A54B328C7FDBB004BE63C /* AnimalResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalResultsViewController.swift; sourceTree = "<group>"; };
 		D96A54B528C8EBF5004BE63C /* AnimalResultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalResultsWrapper.swift; sourceTree = "<group>"; };
 		D96A54BB28C8ED23004BE63C /* AnimalResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalResults.swift; sourceTree = "<group>"; };
@@ -127,6 +137,12 @@
 		D9B0FDEF28C16C7300F90834 /* PaginationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationInfo.swift; sourceTree = "<group>"; };
 		D9B0FDF128C16C8500F90834 /* PaginationLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationLink.swift; sourceTree = "<group>"; };
 		D9B0FDF328C16C9200F90834 /* PaginationNextLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationNextLink.swift; sourceTree = "<group>"; };
+		D9C2C107290AEB86004CB44A /* PickerOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerOptions.swift; sourceTree = "<group>"; };
+		D9C2C109290C98C5004CB44A /* LocationSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchController.swift; sourceTree = "<group>"; };
+		D9C2C10B29120B6F004CB44A /* ShelterSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelterSearchController.swift; sourceTree = "<group>"; };
+		D9C2C10D29120BAA004CB44A /* LocationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationData.swift; sourceTree = "<group>"; };
+		D9C2C10F29120C51004CB44A /* ShelterSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelterSearchView.swift; sourceTree = "<group>"; };
+		D9C2C11129121078004CB44A /* ShelterLocationSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelterLocationSearchController.swift; sourceTree = "<group>"; };
 		D9FA868628DCCD750005C613 /* AnimalDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalDetailView.swift; sourceTree = "<group>"; };
 		D9FBC8FF28DCBBAF00CF968C /* AnimalDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -173,6 +189,7 @@
 				D9B0FDD328BFCEBF00F90834 /* ApiKeys.swift */,
 				D92454F928B549C200D2C961 /* AppDelegate.swift */,
 				D924553028B5512F00D2C961 /* Constants.swift */,
+				D9C2C107290AEB86004CB44A /* PickerOptions.swift */,
 				D92454FB28B549C200D2C961 /* SceneDelegate.swift */,
 				D924552928B5500700D2C961 /* Model */,
 				D924552A28B5501100D2C961 /* View */,
@@ -200,6 +217,7 @@
 				D9B0FDC528BE900E00F90834 /* Animals */,
 				D9B0FDE428C16B8D00F90834 /* JSON Decoding */,
 				D9B0FDC628BE901600F90834 /* Shelters */,
+				D9C2C10D29120BAA004CB44A /* LocationData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -265,6 +283,7 @@
 				D924553F28B9964800D2C961 /* AnimalResultsView.swift */,
 				D9B0FDBF28B9CF7D00F90834 /* AnimalCell.swift */,
 				D9FA868628DCCD750005C613 /* AnimalDetailView.swift */,
+				D967CF3D28EDEDAA000129AE /* AnimalSearchView.swift */,
 			);
 			path = Animal;
 			sourceTree = "<group>";
@@ -275,6 +294,7 @@
 				D924554128B998BD00D2C961 /* ShelterResultsView.swift */,
 				D9B0FDC728BE91EF00F90834 /* ShelterCell.swift */,
 				D939C66828E269ED002D20A9 /* ShelterDetailView.swift */,
+				D9C2C10F29120C51004CB44A /* ShelterSearchView.swift */,
 			);
 			path = Shelter;
 			sourceTree = "<group>";
@@ -326,6 +346,8 @@
 			children = (
 				D96A54B328C7FDBB004BE63C /* AnimalResultsViewController.swift */,
 				D9FBC8FF28DCBBAF00CF968C /* AnimalDetailViewController.swift */,
+				D967CF3B28EDECE3000129AE /* AnimalSearchController.swift */,
+				D9C2C109290C98C5004CB44A /* LocationSearchController.swift */,
 			);
 			path = Animal;
 			sourceTree = "<group>";
@@ -335,6 +357,8 @@
 			children = (
 				D9B0FDBB28B9BFF000F90834 /* ShelterResultsViewController.swift */,
 				D939C66628E269C7002D20A9 /* ShelterDetailViewController.swift */,
+				D9C2C10B29120B6F004CB44A /* ShelterSearchController.swift */,
+				D9C2C11129121078004CB44A /* ShelterLocationSearchController.swift */,
 			);
 			path = Shelter;
 			sourceTree = "<group>";
@@ -442,6 +466,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D939C66928E269ED002D20A9 /* ShelterDetailView.swift in Sources */,
+				D9C2C10C29120B6F004CB44A /* ShelterSearchController.swift in Sources */,
 				D9B0FDF428C16C9200F90834 /* PaginationNextLink.swift in Sources */,
 				D924554028B9964800D2C961 /* AnimalResultsView.swift in Sources */,
 				D9B0FDC028B9CF7D00F90834 /* AnimalCell.swift in Sources */,
@@ -450,8 +475,11 @@
 				D96A54CC28C8EE4F004BE63C /* URLBuilder.swift in Sources */,
 				D9B0FDE628C16BAF00F90834 /* Shelter.swift in Sources */,
 				D96A54C428C8ED77004BE63C /* AnimalAttribute.swift in Sources */,
+				D967CF3C28EDECE3000129AE /* AnimalSearchController.swift in Sources */,
 				D9B0FDD028BFCB8700F90834 /* Networking.swift in Sources */,
 				D9B0FDCE28BED9E900F90834 /* NetworkingSession.swift in Sources */,
+				D9C2C11029120C51004CB44A /* ShelterSearchView.swift in Sources */,
+				D9C2C108290AEB86004CB44A /* PickerOptions.swift in Sources */,
 				D939C66D28EB92BD002D20A9 /* DetailStacks.swift in Sources */,
 				D9B0FDEA28C16C2000F90834 /* Address.swift in Sources */,
 				D92454FA28B549C200D2C961 /* AppDelegate.swift in Sources */,
@@ -459,6 +487,7 @@
 				D92454FC28B549C200D2C961 /* SceneDelegate.swift in Sources */,
 				D96A54BE28C8ED37004BE63C /* Animal.swift in Sources */,
 				D9B0FDEC28C16C3500F90834 /* Photo.swift in Sources */,
+				D9C2C10A290C98C5004CB44A /* LocationSearchController.swift in Sources */,
 				D924553C28B937EC00D2C961 /* LocationManager.swift in Sources */,
 				D96A54C028C8ED4D004BE63C /* Breed.swift in Sources */,
 				D9B0FDCA28BE931C00F90834 /* ShelterURLBuilder.swift in Sources */,
@@ -472,6 +501,8 @@
 				D924552F28B550E200D2C961 /* HomepageView.swift in Sources */,
 				D9B0FDBE28B9CAB000F90834 /* ResultsViewType.swift in Sources */,
 				D9FBC90028DCBBAF00CF968C /* AnimalDetailViewController.swift in Sources */,
+				D967CF3E28EDEDAA000129AE /* AnimalSearchView.swift in Sources */,
+				D9C2C10E29120BAA004CB44A /* LocationData.swift in Sources */,
 				D96A54C228C8ED5D004BE63C /* Color.swift in Sources */,
 				D924552D28B5509000D2C961 /* HomepageViewController.swift in Sources */,
 				D9B0FDD428BFCEBF00F90834 /* ApiKeys.swift in Sources */,
@@ -484,6 +515,7 @@
 				D96A54D028CBF254004BE63C /* ImageLoader.swift in Sources */,
 				D96A54CA28C8EE19004BE63C /* AnimalURLBuilder.swift in Sources */,
 				D924554228B998BD00D2C961 /* ShelterResultsView.swift in Sources */,
+				D9C2C11229121078004CB44A /* ShelterLocationSearchController.swift in Sources */,
 				D939C66728E269C7002D20A9 /* ShelterDetailViewController.swift in Sources */,
 				D9B0FDCC28BE937C00F90834 /* SortOptions.swift in Sources */,
 				D9B0FDEE28C16C5400F90834 /* SocialMedia.swift in Sources */,

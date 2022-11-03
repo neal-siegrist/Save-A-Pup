@@ -13,8 +13,18 @@ class AnimalResultsViewController: ResultsViewController {
     var animalsWrapper: AnimalResultsWrapper = AnimalResultsWrapper()
     private var isFetchingMoreData = false
     
+    let loadingSpinner: UIActivityIndicatorView = {
+        let view = UIActivityIndicatorView()
+        view.stopAnimating()
+        view.hidesWhenStopped = true
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     override init(viewType: ResultsViewType) {
         super.init(viewType: viewType)
+        
+        self.navigationItem.backButtonTitle = "Animals"
     }
     
     required init?(coder: NSCoder) {
@@ -26,8 +36,6 @@ class AnimalResultsViewController: ResultsViewController {
         
         self.view = AnimalResultsView()
         
-        let loadingSpinner = UIActivityIndicatorView()
-        loadingSpinner.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(loadingSpinner)
         
         NSLayoutConstraint.activate([
@@ -37,6 +45,7 @@ class AnimalResultsViewController: ResultsViewController {
         loadingSpinner.startAnimating()
         
         setupTableView()
+        setupSearchButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,16 +64,19 @@ class AnimalResultsViewController: ResultsViewController {
         animalsWrapper.urlBuilder.addParameter(parameterName: .location, paramaterValue: "\(location.coordinate.latitude),\(location.coordinate.longitude)")
         
         //Fetch animals and update UI
+        updateResults()
+        
+    }
+    
+    func updateResults() {
+        loadingSpinner.startAnimating()
+        
         do {
             try animalsWrapper.fetchAnimals() {
-                DispatchQueue.main.async {
-                    guard let currView = self.view as? AnimalResultsView else { return }
+                DispatchQueue.main.async { [weak self] in
+                    guard let currView = self?.view as? AnimalResultsView else { return }
 
-                    for view in currView.subviews {
-                        if let loadingView = (view as? UIActivityIndicatorView) {
-                            loadingView.stopAnimating()
-                        }
-                    }
+                    self?.loadingSpinner.stopAnimating()
                     
                     currView.listView.reloadData()
                 }
@@ -80,6 +92,16 @@ class AnimalResultsViewController: ResultsViewController {
         currView.listView.dataSource = self
         currView.listView.delegate = self
         currView.listView.register(AnimalCell.self, forCellReuseIdentifier: AnimalCell.CELL_IDENTIFIER)
+    }
+    
+    func setupSearchButton() {
+        let rightImage = UIImage(named: "Search.png")
+        
+        let rightImageAction = UIAction(title: "Search") { (action) in
+            self.navigationController?.pushViewController(AnimalSearchController(animalVC: self), animated: true)
+        }
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "", image: rightImage, primaryAction: rightImageAction, menu: nil)
     }
 }
 
