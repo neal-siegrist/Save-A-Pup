@@ -12,16 +12,6 @@ class ShelterResultsViewController: ResultsViewController {
     
     var sheltersWrapper: ShelterResultsWrapper = ShelterResultsWrapper()
     
-    var isFetchingMoreData = false
-    
-    let loadingSpinner: UIActivityIndicatorView = {
-        let view = UIActivityIndicatorView()
-        view.stopAnimating()
-        view.hidesWhenStopped = true
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
     override init(viewType: ResultsViewType) {
         super.init(viewType: viewType)
     }
@@ -35,19 +25,16 @@ class ShelterResultsViewController: ResultsViewController {
         
         self.view = ShelterResultsView()
         
-        self.view.addSubview(loadingSpinner)
-        
-        NSLayoutConstraint.activate([
-            loadingSpinner.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            loadingSpinner.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
-        ])
-        loadingSpinner.startAnimating()
-        
+        setupLoadingSpinner()
         setupTableView()
         setupSearchButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        deselectTableRow()
+    }
+    
+    private func deselectTableRow() {
         guard let currView = self.view as? ShelterResultsView else { return }
         guard let selectedRow = currView.listView.indexPathForSelectedRow else { return }
         
@@ -153,7 +140,6 @@ extension ShelterResultsViewController: UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let shelter = sheltersWrapper.getShelters()[indexPath.section]
-        //guard let currView = self.view as? ShelterResultsView else { return }
         
         navigationController?.pushViewController(ShelterDetailViewController(shelter: shelter), animated: true)
     }
@@ -163,12 +149,13 @@ extension ShelterResultsViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard let currView = self.view as? ShelterResultsView else { fatalError("The view is not a 'ShelterResultsView'") }
         
-        let position = scrollView.contentOffset.y
+        let scrollViewPosition = scrollView.contentOffset.y
         let scrollViewHeight = scrollView.frame.height
         let contentSizeHeight = currView.listView.contentSize.height
+        let heightFetchingThreshold: CGFloat = 100
         
-        if (position + scrollViewHeight) > (contentSizeHeight - 100) && sheltersWrapper.getSheltersCount() > 0 && !isFetchingMoreData && sheltersWrapper.isNextPageAvailable() {
-            currView.listView.tableFooterView = createSpinner()
+        if (scrollViewPosition + scrollViewHeight) > (contentSizeHeight - heightFetchingThreshold) && sheltersWrapper.getSheltersCount() > 0 && !isFetchingMoreData && sheltersWrapper.isNextPageAvailable() {
+            currView.listView.tableFooterView = createFooterLoadingSpinner()
             isFetchingMoreData = true
             
             //Fetch more shelters
@@ -188,7 +175,7 @@ extension ShelterResultsViewController: UIScrollViewDelegate {
         }
     }
     
-    private func createSpinner() -> UIView {
+    private func createFooterLoadingSpinner() -> UIView {
         guard let currView = self.view as? ShelterResultsView else { fatalError("The view is not a 'ShelterResultsView'") }
         
         if let currentSpinner = currView.listView.tableFooterView {

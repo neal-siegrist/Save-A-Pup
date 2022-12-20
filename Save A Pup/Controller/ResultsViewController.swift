@@ -13,6 +13,15 @@ class ResultsViewController: UIViewController {
     
     private var locationSubscriber: AnyCancellable?
     private let viewType: ResultsViewType
+    var isFetchingMoreData = false
+    
+    let loadingSpinner: UIActivityIndicatorView = {
+        let view = UIActivityIndicatorView()
+        view.stopAnimating()
+        view.hidesWhenStopped = true
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
     init(viewType: ResultsViewType) {
         self.viewType = viewType
@@ -20,7 +29,6 @@ class ResultsViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         
         subscribeToLocation()
-        
         
     }
     
@@ -32,6 +40,16 @@ class ResultsViewController: UIViewController {
         super.viewDidLoad()
         
         performSetup()
+    }
+    
+    func setupLoadingSpinner() {
+        self.view.addSubview(loadingSpinner)
+        
+        NSLayoutConstraint.activate([
+            loadingSpinner.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            loadingSpinner.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
+        ])
+        loadingSpinner.startAnimating()
     }
     
     private func subscribeToLocation() {

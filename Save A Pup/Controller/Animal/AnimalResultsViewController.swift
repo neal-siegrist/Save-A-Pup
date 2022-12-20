@@ -11,20 +11,20 @@ import CoreLocation
 class AnimalResultsViewController: ResultsViewController {
     
     var animalsWrapper: AnimalResultsWrapper = AnimalResultsWrapper()
-    private var isFetchingMoreData = false
+//    private var isFetchingMoreData = false
     
-    let loadingSpinner: UIActivityIndicatorView = {
-        let view = UIActivityIndicatorView()
-        view.stopAnimating()
-        view.hidesWhenStopped = true
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+//    let loadingSpinner: UIActivityIndicatorView = {
+//        let view = UIActivityIndicatorView()
+//        view.stopAnimating()
+//        view.hidesWhenStopped = true
+//        view.translatesAutoresizingMaskIntoConstraints = false
+//        return view
+//    }()
     
     override init(viewType: ResultsViewType) {
         super.init(viewType: viewType)
         
-        self.navigationItem.backButtonTitle = "Animals"
+        //self.navigationItem.backButtonTitle = "Animals"
     }
     
     required init?(coder: NSCoder) {
@@ -36,19 +36,17 @@ class AnimalResultsViewController: ResultsViewController {
         
         self.view = AnimalResultsView()
         
-        self.view.addSubview(loadingSpinner)
-        
-        NSLayoutConstraint.activate([
-            loadingSpinner.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            loadingSpinner.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
-        ])
-        loadingSpinner.startAnimating()
+        setupLoadingSpinner()
         
         setupTableView()
         setupSearchButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        deselectTableRow()
+    }
+    
+    private func deselectTableRow() {
         guard let currView = self.view as? AnimalResultsView else { return }
         guard let selectedRow = currView.listView.indexPathForSelectedRow else { return }
         
@@ -160,15 +158,16 @@ extension AnimalResultsViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard let currView = self.view as? AnimalResultsView else { fatalError("The view is not a 'AnimalResultsView'") }
         
-        let position = scrollView.contentOffset.y
+        let scrollViewPosition = scrollView.contentOffset.y
         let scrollViewHeight = scrollView.frame.height
         let contentSizeHeight = currView.listView.contentSize.height
+        let heightFetchingThreshold: CGFloat = 100
         
-        if (position + scrollViewHeight) > (contentSizeHeight - 100) && animalsWrapper.getAnimalsCount() > 0 && !isFetchingMoreData && animalsWrapper.isNextPageAvailable() {
-            currView.listView.tableFooterView = createSpinner()
+        if (scrollViewPosition + scrollViewHeight) > (contentSizeHeight - heightFetchingThreshold) && animalsWrapper.getAnimalsCount() > 0 && !isFetchingMoreData && animalsWrapper.isNextPageAvailable() {
+            currView.listView.tableFooterView = createFooterLoadingSpinner()
             isFetchingMoreData = true
             
-            //Fetch more shelters
+            //Fetch more animals
             do {
                 try animalsWrapper.fetchAnimals(isFetchingNextPage: true) { [weak self] in
                     DispatchQueue.main.async {
@@ -185,7 +184,7 @@ extension AnimalResultsViewController: UIScrollViewDelegate {
         }
     }
     
-    private func createSpinner() -> UIView {
+    private func createFooterLoadingSpinner() -> UIView {
         guard let currView = self.view as? AnimalResultsView else { fatalError("The view is not a 'AnimalResultsView'") }
         
         if let currentSpinner = currView.listView.tableFooterView {
